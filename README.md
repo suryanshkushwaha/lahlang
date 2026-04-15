@@ -23,6 +23,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Language Examples](#language-examples)
+- [Wall of Lah](#wall-of-lah)
 - [CLI Options](#cli-options)
 - [Project Structure](#project-structure)
 - [Architecture](#architecture)
@@ -233,6 +234,14 @@ eh listen lah
 	oi to_words(100);           // "100"
 ok lah bye
 ```
+
+## Wall of Lah
+
+We do it for the community one lah.
+
+Contribute any `.lah` example and get featured automatically as a repository contributor on the Wall of Lah.
+
+See contribution details in [wall-of-lah/README.md](./wall-of-lah/README.md).
 
 ## CLI Options
 

@@ -1,0 +1,37 @@
+eh listen lah
+
+steady lah do this getPrimeMinisterByYear(year) {
+  confirm or not (year less than 1990) {
+    here take {
+      name: "Lee Kuan Yew",
+      description: "He is very scary and has a high forehead"
+    };
+  }
+  or maybe (year less than 2004) {
+    here take {
+      name: "Goh Chong Tong",
+      description: "He is very tall. His friend calls him Panjang"
+    };
+  }
+  or maybe (year less than 2024) {
+    here take {
+      name: "Lee Hsien Loong",
+      description: "He father very scary"
+    };
+  }
+  abuden {
+    here take {
+      name: "Lawrence Wong",
+      description: "He is not a Lee but name still starts with L. Can play guitar."
+    };
+  }
+}
+
+eh got year = 1970;
+eh got pm = getPrimeMinisterByYear(year);
+
+oi "Year is " + year + ".";
+oi "The Prime Minister is " + pm.name;
+oi pm.description;
+
+ok lah bye
