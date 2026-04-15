@@ -1,59 +1,68 @@
-# Wall of Lah
+# 🎭 Wall of Lah
 
-Made by you, lah.
+> Made by you, lah. We do it for the community one lah.
 
-We do it for the community one lah.
+The ultimate community showcase for **LahLang** examples. Submit your `.lah` file and cement your name on the Wall of Lah! 
 
-This is the community showcase for LahLang examples.
-Submit your `.lah` file here and get your name added to the Wall of Lah contributors list.
+🌐 **[View the Live Showcase](https://lahlang.dev/#wall-of-lah)** — See all your community creations in action.
 
-## Wall of Lah (Website Showcase)
+---
 
-Contributors are pulled automatically from this repository.
-Your profile photo is pulled automatically from GitHub using your username.
+## 🚀 Quick Start: How to Contribute
 
-You only need to contribute an example file in this folder and get your PR merged.
+### The 5-Step Process
 
-Avatar source format:
+1. **Fork** this repository
+2. **Create** your example file in this folder
+3. **Name it** like this: `yourname-topic.lah`
+   - Example: `suryansh-fizzbuzz-but-spicy.lah`
+4. **Keep it** runnable and fun (add comments if needed!)
+5. **Open** a Pull Request describing what your example does
 
-```txt
-https://github.com/<username>.png
+### File Naming Convention
+
+```
+<your-name>-<what-it-does>.lah
 ```
 
-## How to contribute
+**Example:**
+```
+suryansh-fizzbuzz-but-spicy.lah
+```
 
-1. Fork this repo.
-2. Add your example file to this folder.
-3. Name your file like this:
-   - `yourname-topic.lah`
-   - Example: `suryansh-fizzbuzz-but-spicy.lah`
-4. Keep your example runnable and fun.
-5. Open a Pull Request with:
-   - What your example does
+---
 
-## Submission rules
+## ✨ Submission Guidelines
 
-- Use only LahLang syntax.
-- Keep examples safe and respectful.
-- Do not overwrite other contributors' files.
-- One idea per file is preferred.
-- If your example needs context, add comments in the file.
-- Your merged PR is your credit on the wall.
+- ✅ Use only LahLang syntax
+- ✅ Keep examples safe and respectful
+- ✅ Add comments if your example needs context
+- ✅ Make it runnable and ready to go
+- ❌ Don't overwrite other contributors' files
+- ❌ One idea per file, please
 
-## Contributor Credits
+---
 
-Credits are automatic. Once your PR is merged, you will appear on the Wall of Lah as a repository contributor.
+## 🏆 Contributor Credits
 
-## Starter ideas
+Your profile and name appear automatically on the **Wall of Lah** once your PR is merged. Your GitHub profile photo is pulled directly from your GitHub account.
 
-- Recreate a classic algorithm in Singlish style
-- Build a mini game flow
-- Show creative use of built-in methods
-- Write something funny but readable
+---
 
-## Support
+## 💡 Inspiration & Starter Ideas
 
-If Lahlang helps you or made you smile, you can support the project here:
+Need ideas? Try these:
 
-- GitHub Sponsors: https://github.com/sponsors/suryanshkushwaha
-- Buy Me a Coffee: https://buymeacoffee.com/suryanshkushwaha
+- 🔢 Recreate a classic algorithm in Singlish style
+- 🎮 Build a mini game flow
+- 🛠️ Show creative use of built-in methods  
+- 😄 Write something funny but readable
+
+---
+
+## 💙 Support LahLang
+
+If LahLang helps you or makes you smile, consider supporting the project:
+
+- [GitHub Sponsors](https://github.com/sponsors/suryanshkushwaha)
+- [Buy Me a Coffee](https://buymeacoffee.com/suryanshkushwaha)

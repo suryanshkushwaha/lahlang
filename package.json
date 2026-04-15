@@ -1,9 +1,19 @@
 {
   "name": "lahlang",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A programming language for Singaporeans, by not a Singaporean yet. Can one lah!",
   "author": "Suryansh Kushwaha",
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "encryptedtouhid",
+      "url": "https://npmjs.com/~encryptedtouhid"
+    },
+    {
+      "name": "jellyfishfingers",
+      "url": "https://github.com/jellyfishfingers"
+    }
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
