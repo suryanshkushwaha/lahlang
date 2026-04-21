@@ -1,0 +1,42 @@
+eh listen lah
+
+oi "=== Singapore COE Price Tracker ==="
+
+eh got history = [
+  { year: 1990, price: 5000 },
+  { year: 1995, price: 12000 },
+  { year: 2000, price: 35000 },
+  { year: 2005, price: 18000 },
+  { year: 2010, price: 55000 },
+  { year: 2015, price: 65000 },
+  { year: 2020, price: 40000 },
+  { year: 2024, price: 106000 }
+];
+
+eh got total = 0;
+
+every one also (entry in history) {
+  eh change total = total + entry.price;
+  oi to_words(entry.year) + ": $" + to_words(entry.price);
+  
+  confirm or not (entry.price less than 10000) {
+    oi "   -> Wah, those were the good old days lah!";
+  } or maybe (entry.price less than 30000) {
+    oi "   -> Hmm... still can tahan.";
+  } or maybe (entry.price less than 50000) {
+    oi "   -> Walao eh, need think twice sia.";
+  } or maybe (entry.price less than 70000) {
+    oi "   -> Siao liao. Might as well take MRT.";
+  } or maybe (entry.price less than 100000) {
+    oi "   -> This one confirm robbery. Call police.";
+  } abuden {
+    oi "   -> Die liao. Car more expensive than HDB. I take bus can liao.";
+  }
+}
+
+oi "Total emotional damage if you bought COE every time: $" + to_words(total);
+
+oi "Conclusion: Just take MRT lah.";
+oi "Wait... MRT also breakdown...";
+
+ok lah bye
