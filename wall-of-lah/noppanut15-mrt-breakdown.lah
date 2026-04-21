@@ -1,0 +1,33 @@
+eh listen lah
+  oi "=== SMRT Weekly Breakdown Report ===";
+  
+  eh got excuses = [
+    "Signal fault",
+    "Track ponding due to heavy rain",
+    "Power trip",
+    "Electrical fault",
+    "Scheduled maintenance overrun",
+    "Software glitch in signaling system"
+  ];
+  
+  eh got lines = ["North-South", "East-West", "Circle", "Downtown", "Thomson-East Coast"];
+  
+  eh got days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  
+  steady lah do this generateAnnouncement(day, excuse_idx) {
+    eh got excuse = excuses[excuse_idx % panjang(excuses)];
+    eh got line = lines[excuse_idx % panjang(lines)];
+    oi day + ": Dear commuters, the " + line + " Line is experiencing delays due to: " + excuse + ". We apologize for the inconvenience.";
+  }
+  
+  one by one lah (i from 0 to 4) {
+    jio generateAnnouncement(days[i], i);
+  }
+  
+  oi "Saturday: No breakdown today? Wah, confirm something wrong.";
+  
+  oi "Sunday: OK time to maintain the tra—";
+  
+  jialat throw "SERVICE DISRUPTED: This program also breakdown liao. Like that how?";
+  
+ok lah bye
