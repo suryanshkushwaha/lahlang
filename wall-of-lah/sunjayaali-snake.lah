@@ -1,0 +1,264 @@
+eh listen lah
+
+chiong bring in "readline";
+chiong bring in "process";
+chiong bring in "timers";
+
+eh got _ = blur blur;
+eh change _ = readline.emitKeypressEvents(process.stdin);
+eh change _ = process.stdin.setRawMode(can);
+
+// shiok: Game state
+eh got width = 15
+eh got height = 15
+eh got gameRunning = can
+eh got gameStarted = cannot
+eh got currentKey = ""
+eh got interval = blur blur
+
+// shiok: Snake initialization function (for restart)
+steady lah do this initSnake() {
+  eh got newSnake = []
+  eh change _ = newSnake.push({x: 4, y: 4})
+  eh change _ = newSnake.push({x: 3, y: 4})
+  eh change _ = newSnake.push({x: 2, y: 4})
+  here take newSnake
+}
+
+eh got snake = initSnake()
+eh got direction = "right"
+eh got nextDirection = "right"
+eh got food = {x: 15, y: 10}
+eh got score = 0
+
+// shiok: Restart game
+steady lah do this restartGame() {
+  eh change gameRunning = can
+  eh change gameStarted = cannot
+  eh change currentKey = ""
+  eh change direction = "right"
+  eh change nextDirection = "right"
+  eh change score = 0
+  eh change snake = initSnake()
+  eh do this generateFood()
+  eh do this drawBoard()
+  oi "Press any key to start..."
+}
+
+
+// shiok: Input handling
+eh change _ = process.stdin.on("keypress", one time only (str, keyx) {
+  confirm or not (keyx.ctrl and also keyx.name same same "c") {
+    oi "\n👋 Bye bye!"
+    eh change _ = process.exit()
+  }
+  
+  // shiok: Handle restart (R key)
+  confirm or not (str same same "r" or can str same same "R") {
+    confirm or not (gameRunning same same cannot) {
+      eh do this restartGame()
+    }
+  }
+  
+  eh change currentKey = str
+  
+  confirm or not (gameStarted same same cannot and also gameRunning same same can) {
+    eh change gameStarted = can
+  }
+})
+
+// shiok: Random function
+steady lah do this randomInt(max) {
+  here take floor(random() * max)
+}
+
+// shiok: Draw board
+steady lah do this drawBoard() {
+  oi "";
+  oi "Score: " + score;
+  oi "==============================";
+  
+  one by one lah (y from 0 to height - 1) {
+    eh got line = ""
+    
+    one by one lah (x from 0 to width - 1) {
+      eh got isSnake = cannot
+      eh got isHead = cannot
+      
+      every one also (segment in snake) {
+        confirm or not (segment.x same same x and also segment.y same same y) {
+          eh change isSnake = can
+          confirm or not (snake[0].x same same x and also snake[0].y same same y) {
+            eh change isHead = can
+          }
+        }
+      }
+      
+      confirm or not (isHead) {
+        eh change line = line + "🤪"
+      } or maybe (isSnake) {
+        eh change line = line + "🟢"
+      } or maybe (food.x same same x and also food.y same same y) {
+        eh change line = line + "🍔"
+      } abuden {
+        eh change line = line + "⬜"
+      }
+    }
+    
+    oi line
+  }
+  
+  oi "==============================";
+  
+  confirm or not (gameRunning) {
+    oi "WASD to move | Q=Quit"
+  } abuden {
+    oi "💀 GAME OVER! Press R to restart | Q=Quit 💀"
+  }
+}
+
+// shiok: Generate food
+steady lah do this generateFood() {
+  eh got newFood = {x: 0, y: 0}
+  eh got valid = cannot
+  
+  keep going lah (dun want valid) {
+    eh change newFood.x = randomInt(width)
+    eh change newFood.y = randomInt(height)
+    eh change valid = can
+    
+    every one also (segment in snake) {
+      confirm or not (segment.x same same newFood.x and also segment.y same same newFood.y) {
+        eh change valid = cannot
+      }
+    }
+  }
+  
+  eh change food = newFood
+}
+
+// shiok: Check wall collision
+steady lah do this checkWallCollision(headX, headY) {
+  confirm or not (headX less than 0 or can headX more than or same width or can headY less than 0 or can headY more than or same height) {
+    here take can
+  }
+  
+  here take cannot
+}
+
+// shiok: Check self collision
+steady lah do this checkSelfCollision(headX, headY) {
+  one by one lah (i from 1 to panjang(snake) - 1) {
+    confirm or not (snake[i].x same same headX and also snake[i].y same same headY) {
+      here take can
+    }
+  }
+  
+  here take cannot
+}
+
+// shiok: Clear screen and show game immediately
+oi "==========================================";
+oi "        🐍  S N A K E   L A H  🐍";
+oi "==========================================";
+
+eh do this generateFood();
+eh do this drawBoard();
+oi "Press any key to start..."
+
+// shiok: Game interval
+eh change interval = timers.setInterval(one time only () {
+  confirm or not (gameRunning and also gameStarted) {
+    
+    // shiok: Update direction from currentKey
+    confirm or not (currentKey same same "a" and also direction not same "right") {
+      eh change nextDirection = "left"
+    } or maybe (currentKey same same "d" and also direction not same "left") {
+      eh change nextDirection = "right"
+    } or maybe (currentKey same same "w" and also direction not same "down") {
+      eh change nextDirection = "up"
+    } or maybe (currentKey same same "s" and also direction not same "up") {
+      eh change nextDirection = "down"
+    } or maybe (currentKey same same "q") {
+      eh change gameRunning = cannot
+      oi "Eh why quit, chicken ah? 🐔"
+      eh change _ = timers.clearInterval(interval)
+      eh change _ = process.exit()
+    }
+    
+    eh change currentKey = ""
+    eh change direction = nextDirection
+    
+    // shiok: Calculate new head
+    eh got newHead = {x: snake[0].x, y: snake[0].y}
+    
+    confirm or not (direction same same "right") {
+      eh change newHead.x = newHead.x + 1
+    } or maybe (direction same same "left") {
+      eh change newHead.x = newHead.x - 1
+    } or maybe (direction same same "up") {
+      eh change newHead.y = newHead.y - 1
+    } or maybe (direction same same "down") {
+      eh change newHead.y = newHead.y + 1
+    }
+    
+    eh got ateFood = (newHead.x same same food.x and also newHead.y same same food.y)
+    
+    // shiok: Build new snake
+    eh got newSnake = []
+    eh change _ = newSnake.push(newHead)
+    
+    every one also (segment in snake) {
+      eh change _ = newSnake.push(segment)
+    }
+    
+    confirm or not (ateFood) {
+      eh change snake = newSnake
+      eh change score = score + 10
+      eh do this generateFood()
+    } abuden {
+      eh got tempSnake = []
+      one by one lah (i from 0 to panjang(newSnake) - 2) {
+        eh change _ = tempSnake.push(newSnake[i])
+      }
+      eh change snake = tempSnake
+    }
+
+    confirm or not (score % 50 same same 0) {
+      oi "\n🎉 WAH! Power lah! 🎉"
+    }
+    
+    // shiok: Check collision - GAME OVER!
+    eh got wallCollided = checkWallCollision(newHead.x, newHead.y)
+    eh got selfCollided = checkSelfCollision(newHead.x, newHead.y)
+    confirm or not (wallCollided or can selfCollided) {
+      eh do this drawBoard()
+
+      eh change gameRunning = cannot
+      eh change gameStarted = cannot
+      confirm or not (wallCollided) {
+        oi "\n💀 WALAO EH! Hit wall sia! 💀"
+      } or maybe (selfCollided) {
+        oi "\n💀 Aiyoh! You makan yourself ah? 💀"
+      }
+      oi "Your final score: " + score
+      
+      confirm or not (score more than 100) {
+        oi "Wah damn pro sia! 🤪"
+      } or maybe (score more than 50) {
+        oi "Not bad lah, still can improve 💪"
+      } abuden {
+        oi "Aiyoh... practice more leh 🐍"
+      }
+      oi ""
+      oi "Press R to restart or Ctrl+C to exit"
+      
+    }
+    
+    confirm or not (gameRunning) {
+      eh do this drawBoard()
+    }
+  }
+}, 150)
+
+ok lah bye
